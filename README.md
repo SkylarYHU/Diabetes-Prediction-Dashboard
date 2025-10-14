@@ -1,74 +1,48 @@
 # Diabetes Prediction Dashboard
 
-A Streamlit dashboard for binary classification of diabetes risk using an XGBoost model. It provides an interactive Predict page, fairness analysis visuals, and simple model evaluation utilities.
+A Streamlit app that predicts diabetes risk using an XGBoost model. It’s designed for learning and demonstration, combining interactive predictions with basic fairness analysis.
 
-## Features
-- Interactive sidebar inputs (gender, age, hypertension, heart disease, smoking history, BMI, HbA1c, glucose).
-- Default prediction shown on first load with a top info banner; users adjust inputs and click Predict to run their own inference.
-- Two Predict buttons in the sidebar (one under the Input header, one at the bottom) for convenience.
-- Adjustable classification threshold (default comes from model_meta.yaml).
-- Fairness page with Altair bar charts visualizing performance by Gender and Smoking History (horizontal x-axis labels).
-- Teaching/demo disclaimer to emphasize non-clinical use.
+## Live Demo
+Check out the deployed app on Streamlit:  
+👉 [Diabetes Prediction Dashboard on Streamlit]()
 
-## Repository Structure
-- `app.py` — Streamlit application.
-- `preprocessing.py` — Preprocessing utilities (e.g., recategorization).
-- `train_pipeline.py` — Training script for XGBoost model, data split, and metadata export.
-- `final_xgboost_model.pkl` — Trained model artifact.
-- `model_meta.yaml` — Model metadata (e.g., threshold).
-- `cleaned_diabetes_dataset.csv`, `diabetes_prediction_dataset.csv` — Source/cleaned datasets.
-- `train.csv`, `valid.csv`, `test.csv` — Data splits for training/validation/test.
-- `requirements.txt` — Python dependencies.
-- `Diabetes_Prediction.ipynb` — Notebook (exploration/experiments).
-- `Diabetes_Prediction.html` — Project report/notes.
+## Screenshot
+Here’s a quick look at the app interface 👇  
 
-## Requirements
-- Python 3.10+ (tested on 3.12).
-- Install dependencies:
+![Diabetes Dashboard Screenshot](images/screenshot.png)
 
+## What You Can Do
+- Adjust inputs in the sidebar and click Predict to see diabetes risk.
+
+- Explore how the threshold affects results with a simple slider.
+
+- Check the Fairness page to visualize model performance by gender and smoking history.
+
+## How to Run
 ```bash
-pip install -r requirements.txt
+  pip install -r requirements.txt
+  streamlit run app.py
 ```
 
-## Quickstart (Local)
-1. Ensure datasets and model files are available (provided in this repo).
-2. Run the app:
+Then open it in your browser — you’ll see a default prediction first, and you can test your own inputs anytime.
 
-```bash
-streamlit run app.py
-```
+## Tech Behind It
 
-3. In the browser:
-   - On first load, the page shows a default prediction (info banner at the top explains this).
-   - Adjust parameters in the left sidebar and click the Predict button to run your own inference.
-   - Use the threshold slider to explore sensitivity-specificity trade-offs.
+- Streamlit for the dashboard
 
-## Pages Overview
-- Predict:
-  - Displays diabetes probability, current threshold, and a high/low risk message.
-  - "View Input Features" expander shows the exact feature row passed to the model.
-- Fairness:
-  - Altair bar charts (with horizontal x-axis labels) for groups such as Gender and Smoking History.
-  - Intended for teaching discussions of TPR/FPR and subgroup parity (extend as needed).
+- XGBoost for binary classification
 
-## Training
-- The `train_pipeline.py` script trains the XGBoost model and writes the model artifact and `model_meta.yaml` (including an optimized threshold based on validation metrics).
-- You can retrain using your own data (ensure consistent schema with the app’s preprocessing).
+- Altair for visualizations
 
-## Configuration
-- Default threshold is read from `model_meta.yaml`. If absent, the app falls back to an internal default.
-- All inputs are provided via the sidebar; the app computes features and calls `predict_proba` when available.
+- Python 3.10+
 
-## Data & Privacy
-- The included CSV files are for educational/demo purposes. Do not commit any real patient-identifiable data.
-- If using real-world data, ensure proper de-identification and compliance with relevant regulations before training or sharing.
+## Why I Built It
 
-## Tips
-- To keep the repository lightweight, consider using Git LFS or excluding large datasets/models.
-- Add environment-specific secrets to `.streamlit/secrets.toml` (not committed) if you integrate external services.
+This project started as a way to explore how machine learning can support health-related insights — and how fairness plays a role in prediction models.
 
-## Contribution
-Issues and pull requests are welcome. Please describe proposed changes clearly and include minimal reproducible examples where relevant.
+## Note
 
-## Disclaimer
-This application is for teaching and demonstration purposes only and does not replace professional medical advice.
+All data here is for demo only, not for medical decisions.
+
+---
+Built with curiosity, caffeine, and a love for data
