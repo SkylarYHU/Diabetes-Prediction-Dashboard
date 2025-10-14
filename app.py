@@ -12,14 +12,14 @@ from sklearn.inspection import permutation_importance
 from sklearn.metrics import precision_recall_curve, confusion_matrix
 import altair as alt
 
-# 新增：校准与绘图/SHAP
+# Added: calibration and plotting / SHAP
 from sklearn.calibration import calibration_curve
 from sklearn.metrics import brier_score_loss
-# 移除顶层直接导入 shap，改为延迟导入以兼容 NumPy 2.0
+# Removed top-level import for shap, switched to lazy import for NumPy 2.0 compatibility
 import importlib
 import matplotlib.pyplot as plt
 
-# SHAP 已移除：删除延迟导入函数与重复导入
+# SHAP removed: deleted lazy import helpers and duplicate imports
 
 st.set_page_config(page_title="Diabetes Prediction (XGBoost)", page_icon="🩺", layout="centered")
 
@@ -128,7 +128,7 @@ with st.sidebar:
 
 
 def build_feature_row():
-    # 构建原始特征行，交由 Pipeline 内部完成 OneHot 编码与转换
+    # Build the raw feature row; OneHot encoding and transformations are handled inside the Pipeline
     features = {
         "gender": gender,
         "age": float(age),
