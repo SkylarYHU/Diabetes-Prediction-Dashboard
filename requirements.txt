@@ -7,6 +7,7 @@ scikit-learn==1.7.2
 xgboost==3.0.5
 joblib==1.5.2
 streamlit==1.38.0
+altair>=5.0.0
 # YAML support for metadata reading
 PyYAML==6.0.2
 # Added for calibration plots and explanations
