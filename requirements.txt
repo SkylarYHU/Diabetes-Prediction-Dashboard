@@ -1,0 +1,13 @@
+# Minimal, cross-platform, reproducible dependencies for this project
+# Pinned versions align with the currently working local environment
+
+numpy==2.1.0
+pandas==2.2.2
+scikit-learn==1.7.2
+xgboost==3.0.5
+joblib==1.5.2
+streamlit==1.38.0
+# YAML support for metadata reading
+PyYAML==6.0.2
+# Added for calibration plots and explanations
+matplotlib==3.9.2
